@@ -6,6 +6,31 @@ import AddGarment from "./pages/AddGarment/AddGarment";
 import Login from "./pages/Login/Login";
 import Inventory from "./pages/Inventory/Inventory"
 
+
+
+//firebase
+import firebase from 'firebase';
+import dotenv from 'dotenv';
+
+var config = {
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASEURL,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID
+};
+
+firebase.initializeApp(config);
+
+const db = firebase.firestore();
+const settings = {/* your settings... */ timestampsInSnapshots: true};
+db.settings(settings);
+var auth = firebase.auth();
+var storageRef = firebase.storage().ref();
+
+// end firebase
+
 class App extends React.Component {
 
   state = {
